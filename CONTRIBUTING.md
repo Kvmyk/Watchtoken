@@ -7,7 +7,7 @@ Dziękujemy za zainteresowanie współpracą przy projekcie WatchToken! 🎉
 1. **Forkuj repozytorium** na GitHubie
 2. **Sklonuj swój fork** lokalnie:
    ```bash
-   git clone https://github.com/twojusername/watchtoken.git
+   git clone https://github.com/Kvmyk/watchtoken.git
    cd watchtoken
    ```
 3. **Utwórz nowy branch** dla swojej funkcji:
