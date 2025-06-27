@@ -26,13 +26,13 @@ tc = TokenCounter("claude-3-sonnet")
 ```
 
 ### 🧠 Google Adapter (`google.py`)
-- **Modele**: gemini-pro, gemini-pro-vision
+- **Modele**: gemini-2.5-pro, gemini-2.5-flash, gemini-2.5-flash-lite, gemini-1.5-pro
 - **Tokenizer**: Estymacja (character based z adjustmentami)
 - **Zależności**: Brak  
 - **Status**: ✅ Estymacja (~90% dokładność)
 
 ```python
-tc = TokenCounter("gemini-pro")
+tc = TokenCounter("gemini-2.5-pro")
 ```
 
 ### ⚡ Mistral Adapter (`mistral.py`)

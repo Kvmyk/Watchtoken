@@ -5,15 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.2.1] - 2025-06-27
+
+### Added
+ - **Change to README.md**: Better support for instructions
+
+
+## [0.2.0] - 2025-06-27
 
 ### Added
 - **New OpenAI Models**: Support for latest OpenAI models including:
   - `gpt-4o` - Multimodal flagship model with vision capabilities
   - `gpt-4o-mini` - Economical model with great performance-to-cost ratio
   - `gpt-4.1` - Latest generation with 1M token context window
-  - `gpt-4.1-mini` - Smaller variant of GPT-4.1 (estimated pricing)
-  - `gpt-4.1-nano` - Ultra-efficient variant of GPT-4.1 (estimated pricing)
+  - `gpt-4.1-mini`, `gpt-4.1-nano` - Smaller variants (estimated pricing)
   - `gpt-image-1` - Specialized vision model for image processing
 
 - **New Anthropic Models**: Support for latest Claude models including:
@@ -27,7 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `gemini-2.5-flash-lite` - Lightweight flash model optimized for speed
 
 - **Enhanced Testing**: Comprehensive test suite for all new models
-- **Demo Scripts**: New examples demonstrating latest model capabilities and cost optimization
+- **Demo Scripts**: New examples demonstrating latest model capabilities
 - **Documentation Updates**: README.md updated with current model support matrix
 
 ### Changed
@@ -41,9 +46,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Cost estimation updated with latest pricing tiers
 - Full backward compatibility maintained
 
-## [Previous Versions]
-
-### [0.1.0] - Initial Release
+## [0.1.0] - Initial Release
 - Basic token counting for OpenAI models
 - Support for GPT-3.5 and GPT-4 families
 - Claude 3 model support

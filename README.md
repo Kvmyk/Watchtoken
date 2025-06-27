@@ -73,8 +73,9 @@ claude_sonnet4_counter = TokenCounter("claude-sonnet-4", limit=200000)
 claude_haiku_counter = TokenCounter("claude-3-haiku", limit=200000)  # Najszybszy
 
 # Gemini modele
-gemini15_pro_counter = TokenCounter("gemini-1.5-pro", limit=1048576)  # Ogromny kontekst
-gemini15_flash_counter = TokenCounter("gemini-1.5-flash", limit=1048576)  # Szybki
+gemini25_pro_counter = TokenCounter("gemini-2.5-pro", limit=1048576)  # Najnowszy Pro
+gemini25_flash_counter = TokenCounter("gemini-2.5-flash", limit=1048576)  # Szybki 2.5
+gemini25_lite_counter = TokenCounter("gemini-2.5-flash-lite", limit=1000000)  # Ultra-ekonomiczny
 ```
 
 ### Callbacki i obsługa przekroczeń
@@ -138,7 +139,7 @@ cost = tc.estimate_cost("Hello world!", output_tokens=10)
 |----------|-------|-----------|--------|
 | OpenAI | gpt-3.5-turbo, gpt-4, gpt-4-turbo, gpt-4o, gpt-4o-mini, gpt-4.1* | tiktoken | ✅ |
 | Anthropic | claude-3-haiku, claude-3-sonnet, claude-3-opus, claude-sonnet-4* | Estymacja | ✅ |
-| Google | gemini-pro, gemini-1.5-pro, gemini-1.5-flash | Estymacja | ✅ |
+| Google | gemini-2.5-pro, gemini-2.5-flash, gemini-2.5-flash-lite, gemini-1.5-pro | Estymacja | ✅ |
 | Mistral | mistral-7b, mixtral-8x7b | SentencePiece | ✅ |
 | Custom | Własne modele | Pluginy | ✅ |
 
@@ -189,10 +190,11 @@ mypy watchtoken
 
 ## 📋 Roadmapa
 
-- [ ] **v0.2.0**: Wsparcie dla więcej modeli (LLaMA, PaLM)
+- [x] **v0.2.0**: ✅ Wsparcie dla najnowszych modeli (GPT-4o, Claude Sonnet 4, Gemini 2.5)
 - [ ] **v0.3.0**: CLI interface
 - [ ] **v0.4.0**: Asynchroniczne API
 - [ ] **v0.5.0**: Integracje z popularnymi frameworkami (LangChain, LlamaIndex)
+- [ ] **v0.6.0**: Wsparcie dla więcej modeli (LLaMA, xAI Grok)
 - [ ] **v1.0.0**: Stabilne API, pełna dokumentacja
 
 ## 🤝 Współpraca
