@@ -98,11 +98,88 @@ class TestTokenCounter:
         tc = TokenCounter("gpt-3.5-turbo", limit=100)
 
         text = "Hello world!"
-        used_tokens = tc.count(text)
         remaining = tc.get_remaining_tokens(text)
 
-        assert remaining == 100 - used_tokens
-        assert remaining >= 0
+        assert remaining > 0
+        assert remaining == tc.limit - tc.count(text)
+
+    def test_new_openai_models(self):
+        """Test new OpenAI models functionality."""
+        new_models = ["gpt-4o", "gpt-4o-mini", "gpt-4.1", "gpt-4.1-mini", "gpt-4.1-nano"]
+
+        for model in new_models:
+            tc = TokenCounter(model)
+
+            # Test basic functionality
+            tokens = tc.count("Hello, world!")
+            assert tokens > 0
+
+            # Test cost estimation
+            cost = tc.estimate_cost("Hello, world!", output_tokens=100)
+            assert cost > 0
+
+            # Test model info
+            info = tc.get_model_info()
+            assert info["model"] == model
+            assert info["provider"] == "openai"
+
+    def test_new_anthropic_models(self):
+        """Test new Anthropic Claude models functionality."""
+        new_models = ["claude-sonnet-4", "claude-opus-4", "claude-3-7-sonnet"]
+
+        for model in new_models:
+            tc = TokenCounter(model)
+
+            # Test basic functionality
+            tokens = tc.count("Hello, world!")
+            assert tokens > 0
+
+            # Test cost estimation
+            cost = tc.estimate_cost("Hello, world!", output_tokens=100)
+            assert cost > 0
+
+            # Test model info
+            info = tc.get_model_info()
+            assert info["model"] == model
+            assert info["provider"] == "anthropic"
+
+    def test_new_google_models(self):
+        """Test new Google Gemini models functionality."""
+        new_models = ["gemini-2.5-pro", "gemini-2.5-flash", "gemini-2.5-flash-lite"]  # Test actual new models
+        
+        for model in new_models:
+            tc = TokenCounter(model)
+            
+            # Test basic functionality
+            tokens = tc.count("Hello, world!")
+            assert tokens > 0
+            
+            # Test cost estimation
+            cost = tc.estimate_cost("Hello, world!", output_tokens=100)
+            assert cost > 0
+            
+            # Test model info
+            info = tc.get_model_info()
+            assert info["model"] == model
+            assert info["provider"] == "google"
+
+    def test_large_context_models(self):
+        """Test models with very large context windows."""
+        large_context_models = [
+            ("gpt-4.1", 1000000),
+            ("gemini-1.5-pro", 1048576),
+            ("gemini-1.5-flash", 1048576),
+        ]
+
+        for model, expected_context in large_context_models:
+            tc = TokenCounter(model, limit=expected_context)
+
+            # Test that we can set very high limits
+            assert tc.limit == expected_context
+
+            # Test remaining tokens calculation
+            remaining = tc.get_remaining_tokens("Short prompt")
+            assert remaining > expected_context - 100  # Should be close to full context
 
     def test_unsupported_model(self):
         """Test handling of unsupported models."""

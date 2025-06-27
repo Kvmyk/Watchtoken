@@ -63,15 +63,18 @@ print(f"Szacowany koszt: ${cost:.4f}")
 ```python
 from watchtoken import TokenCounter
 
-# OpenAI modele
-gpt4_counter = TokenCounter("gpt-4-turbo", limit=8000)
-gpt35_counter = TokenCounter("gpt-3.5-turbo", limit=4000)
+# OpenAI modele - najnowsze
+gpt4o_counter = TokenCounter("gpt-4o", limit=128000)  # Multimodal
+gpt4o_mini_counter = TokenCounter("gpt-4o-mini", limit=128000)  # Ekonomiczny
+gpt41_counter = TokenCounter("gpt-4.1", limit=1000000)  # Najnowszy z dużym kontekstem
 
-# Claude modele
-claude_counter = TokenCounter("claude-3-sonnet", limit=200000)
+# Claude modele - najnowsze
+claude_sonnet4_counter = TokenCounter("claude-sonnet-4", limit=200000)
+claude_haiku_counter = TokenCounter("claude-3-haiku", limit=200000)  # Najszybszy
 
 # Gemini modele
-gemini_counter = TokenCounter("gemini-pro", limit=30720)
+gemini15_pro_counter = TokenCounter("gemini-1.5-pro", limit=1048576)  # Ogromny kontekst
+gemini15_flash_counter = TokenCounter("gemini-1.5-flash", limit=1048576)  # Szybki
 ```
 
 ### Callbacki i obsługa przekroczeń
@@ -133,11 +136,13 @@ cost = tc.estimate_cost("Hello world!", output_tokens=10)
 
 | Provider | Model | Tokenizer | Status |
 |----------|-------|-----------|--------|
-| OpenAI | gpt-3.5-turbo, gpt-4, gpt-4-turbo | tiktoken | ✅ |
-| Anthropic | claude-3-sonnet, claude-3-opus | Estymacja | ✅ |
-| Google | gemini-pro, gemini-pro-vision | Estymacja | ✅ |
-| Mistral | mistral-7b, mixtral-8x7b | SentencePiece | 🚧 |
+| OpenAI | gpt-3.5-turbo, gpt-4, gpt-4-turbo, gpt-4o, gpt-4o-mini, gpt-4.1* | tiktoken | ✅ |
+| Anthropic | claude-3-haiku, claude-3-sonnet, claude-3-opus, claude-sonnet-4* | Estymacja | ✅ |
+| Google | gemini-pro, gemini-1.5-pro, gemini-1.5-flash | Estymacja | ✅ |
+| Mistral | mistral-7b, mixtral-8x7b | SentencePiece | ✅ |
 | Custom | Własne modele | Pluginy | ✅ |
+
+*Najnowsze modele z szacowanymi cenami
 
 ### Własne adaptery
 
