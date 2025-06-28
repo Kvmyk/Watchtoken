@@ -264,6 +264,30 @@ MODEL_CONFIGS: Dict[str, ModelConfig] = {
         output_cost_per_token=0.00000040, # $0.40 per 1M output :contentReference[oaicite:9]{index=9}
         tokenizer_type="estimation",
     ),
+    "gemini-2.0-flash": ModelConfig(
+    name="gemini-2.0-flash",
+    provider=ModelProvider.GOOGLE,
+    context_length=1048576,  # 1 000 000 input, 65 536 output
+    input_cost_per_token=0.00000050,  # $0.50 per 1M input
+    output_cost_per_token=0.00000150, # $1.50 per 1M output
+    tokenizer_type="estimation",
+    ),
+    "gemini-2.0-pro": ModelConfig(
+    name="gemini-2.0-pro",
+    provider=ModelProvider.GOOGLE,
+    context_length=1048576,  # 1 000 000 input, ~8 192 output
+    input_cost_per_token=0.00000080,  # $0.80 per 1M input
+    output_cost_per_token=0.00000200, # $2.00 per 1M output
+    tokenizer_type="estimation",
+),
+"gemini-2.0-flash-lite": ModelConfig(
+    name="gemini-2.0-flash-lite",
+    provider=ModelProvider.GOOGLE,
+    context_length=1048576,  # 1 000 000 input, 8 192 output
+    input_cost_per_token=0.00000050,  # ok. $0.50 per 1M input – szacunkowo o połowę taniej od Flash
+    output_cost_per_token=0.00000150, # ok. $1.50 per 1M output
+    tokenizer_type="estimation",
+),
 
 }
 
